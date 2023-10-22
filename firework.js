@@ -39,7 +39,7 @@ class Firework {
     explode(){
         let particles = [];
 
-        if (floor(random(100)) <= 15){
+        if (floor(random(100)) <= 25){
             let particleAmount = 30
             for (let i = 0; i < particleAmount; i++){
                 let theta = (TWO_PI/particleAmount)*i;
