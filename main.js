@@ -1,11 +1,11 @@
 var canvas;
-var particle;
+var fireworks = [];
 
 function setup(){
     canvas = createCanvas(window.innerWidth, window.innerHeight);
     canvas.parent('gameContainer');
 
-    particle = new Particle(width/2, height+50, undefined, undefined); 
+    
 }
 
 
@@ -15,10 +15,33 @@ function windowResized(){
 
 function draw(){
     background(0);
-    particle.show();
-    particle.update();
+
+    for (let i = fireworks.length - 1; i >= 0; i--){
+        var outOfBounds = true;
+        fireworks[i].particles.forEach(particle => {
+            if (particle.pos.y <= height+50){
+                outOfBounds = false;
+            }
+        })
+        if (!outOfBounds){
+            fireworks[i].show();
+            fireworks[i].update();
+        }
+    }
+    
+    
+
+    if (floor(random(100)) <= 7){
+        fireworks.push(new Firework({
+            r: floor(random(255)),
+            g: floor(random(255)),
+            b: floor(random(255)),
+            a: floor(random(150, 255))
+        }, random(5, 10)))
+    }
+
 }
 
 function mousePressed(){
-    particle.shootUp();
+    
 }
