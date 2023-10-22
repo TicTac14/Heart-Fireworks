@@ -65,14 +65,14 @@ function initEventListeners(){
                 opacity: 0,
                 easing: "ease-in-out"
             }
-        ], 3000);
+        ], 5000);
         setTimeout(() => {
             startShowBtn.classList.add('hidden');
-        }, 3000);
+        }, 5000);
         setTimeout(()=> {
             document.getElementById('gameContainer')
             .classList.remove('hidden');
             startShow = true;
-        }, 2000) 
+        }, 3000) 
     });
 }
